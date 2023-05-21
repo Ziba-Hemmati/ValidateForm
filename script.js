@@ -68,7 +68,7 @@ function login(event) {
         upper.test(password) &&
         lower.test(password) &&
         number.test(password) &&
-        password.length > 8
+        password.length >= 8
       )
     ) {
       passMsg.innerText = "Please enter a valid password";
