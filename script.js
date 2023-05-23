@@ -19,7 +19,6 @@ function login(event) {
   userName.classList.remove("error-border");
   userEmail.classList.remove("error-border");
   userPass.classList.remove("error-border");
-  let ifSubmit = true;
 
   // Validate Name
   function validateName(name) {
@@ -27,19 +26,19 @@ function login(event) {
     if (userNameValue.length === 0) {
       nameMsg.innerText = "Please enter a valid name";
       userName.classList.add("error-border");
-      return (ifSubmit = false);
+      return false;
     }
     if (userNameValue.length > 15) {
       nameMsg.innerText = "Not over than 15 characters";
       userName.classList.add("error-border");
-      return (ifSubmit = false);
+      return false;
     }
     if (!englishLetters.test(name)) {
       nameMsg.innerText = "Use english letters";
       userName.classList.add("error-border");
-      return (ifSubmit = false);
+      return false;
     }
-    return (ifSubmit = true);
+    return true;
   }
   validateName(userNameValue);
 
@@ -52,9 +51,9 @@ function login(event) {
     ) {
       emailMsg.innerText = "Please enter a valid email";
       userEmail.classList.add("error-border");
-      return (ifSubmit = false);
+      return false;
     }
-    return (ifSubmit = true);
+    return true;
   }
   validateEmail(userEmailValue);
 
@@ -73,14 +72,18 @@ function login(event) {
     ) {
       passMsg.innerText = "Please enter a valid password";
       userPass.classList.add("error-border");
-      return (ifSubmit = false);
+      return false;
     } else {
-      return (ifSubmit = true);
+      return true;
     }
   }
   validatePass(userPassValue);
 
-  if (ifSubmit) {
+  if (
+    validatePass(userPassValue) &&
+    validateEmail(userEmailValue) &&
+    validateName(userNameValue)
+  ) {
     submitMsg.innerText = "You login successfully";
     submitMsg.classList.add("correct");
   } else {
