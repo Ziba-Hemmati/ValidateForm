@@ -57,3 +57,14 @@ form {
 .error-border {
   border: 1.6px solid red;
 }
+@media (max-width: 425px) {
+  form {
+    width: 300px;
+  }
+  input {
+    width: 16rem;
+  }
+  input[type="submit"] {
+    width: 6rem;
+  }
+}
